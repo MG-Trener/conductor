@@ -2,8 +2,11 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>CONDUCTOR | Пиротехника</title>
+  <title>CONDUCTOR | Цветные дымы и Holi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
   <style>
     body {
@@ -16,11 +19,34 @@
 
     .hero {
       height: 100vh;
-      background: radial-gradient(circle at center, #1a1a1a, #000);
+      position: relative;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+    }
+
+    /* 🔥 Контейнер анимации */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* 🌑 Затемнение */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 1;
+    }
+
+    .hero * {
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
@@ -30,13 +56,13 @@
     }
 
     p {
-      font-size: 20px;
-      opacity: 0.8;
+      font-size: 22px;
+      opacity: 0.9;
       margin-top: 10px;
     }
 
     .btn {
-      margin-top: 20px;
+      margin-top: 15px;
       padding: 15px 30px;
       font-size: 18px;
       border-radius: 10px;
@@ -46,14 +72,14 @@
       display: inline-block;
     }
 
+    .btn-wa {
+      background: #25D366;
+      color: black;
+    }
+
     .btn-inst {
       background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
       color: white;
-    }
-
-    .btn-phone {
-      background: #22c55e;
-      color: black;
     }
 
     .btn:hover {
@@ -63,10 +89,6 @@
     .features {
       padding: 60px 20px;
       background: #0a0a0a;
-    }
-
-    .features h2 {
-      margin-bottom: 30px;
     }
 
     .grid {
@@ -94,36 +116,84 @@
 <body>
 
   <section class="hero">
+
+    <!-- 🔥 Анимация -->
+    <div id="particles-js"></div>
+
     <h1>CONDUCTOR</h1>
-    <p>Профессиональная пиротехника и шоу</p>
+    <p>Цветные дымы • Краски Holi • Шоу</p>
 
     <a href="https://instagram.com/conductor.kz" target="_blank" class="btn btn-inst">
-      Смотреть Instagram
+      Instagram
     </a>
 
-    <a href="tel:+77018709384" class="btn btn-phone">
-      Позвонить: +7 701 870 93 84
+    <a href="https://wa.me/77018709384" target="_blank" class="btn btn-wa">
+      💬 WhatsApp 1
     </a>
+
+    <a href="https://wa.me/77756511100" target="_blank" class="btn btn-wa">
+      💬 WhatsApp 2
+    </a>
+
   </section>
 
   <section class="features">
     <h2>Наши услуги</h2>
 
     <div class="grid">
-      <div class="card">🎆 Салюты на свадьбу</div>
-      <div class="card">🔥 Шоу на мероприятия</div>
-      <div class="card">🎇 Профессиональные фейерверки</div>
-      <div class="card">💥 Индивидуальные сценарии</div>
-      <div class="card">☀️ Дневные салюты</div>
-      <div class="card">🌈 Краски Холи (продажа)</div>
+      <div class="card">🌈 Краски Holi</div>
+      <div class="card">💨 Цветные дымы</div>
+      <div class="card">🎆 Салюты</div>
+      <div class="card">🔥 Шоу</div>
+      <div class="card">🎇 Фейерверки</div>
+      <div class="card">💥 Сценарии</div>
     </div>
   </section>
 
   <footer>
-    📞 +7 701 870 93 84 | Instagram: conductor.kz  
-    <br><br>
-    © Conductor.kz — Все права защищены
+    © Conductor.kz
   </footer>
+
+  <!-- ⚙️ Настройка частиц -->
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: {
+          value: 120
+        },
+        color: {
+          value: ["#ff0080", "#ff8c00", "#00ffff", "#00ff87", "#ff00ff"]
+        },
+        shape: {
+          type: "circle"
+        },
+        opacity: {
+          value: 0.6,
+          random: true
+        },
+        size: {
+          value: 6,
+          random: true
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: "none",
+          random: true,
+          out_mode: "out"
+        }
+      },
+      interactivity: {
+        events: {
+          onhover: {
+            enable: true,
+            mode: "repulse"
+          }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
 
 </body>
 </html>
