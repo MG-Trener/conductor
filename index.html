@@ -5,9 +5,6 @@
   <title>CONDUCTOR | Цветные дымы и Holi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- particles.js -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-
   <style>
     body {
       margin: 0;
@@ -15,6 +12,7 @@
       background: black;
       color: white;
       text-align: center;
+      overflow-x: hidden;
     }
 
     .hero {
@@ -27,26 +25,65 @@
       align-items: center;
     }
 
-    /* 🔥 Контейнер анимации */
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
-
     /* 🌑 Затемнение */
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
       background: rgba(0,0,0,0.6);
-      z-index: 1;
+      z-index: 2;
+    }
+
+    /* 💨 ДЫМ */
+    .smoke {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      filter: blur(120px);
+      opacity: 0.6;
+      animation: moveSmoke 25s linear infinite;
+      mix-blend-mode: screen;
+    }
+
+    .smoke1 {
+      background: radial-gradient(circle, #ff0080, transparent 60%);
+      animation-duration: 30s;
+    }
+
+    .smoke2 {
+      background: radial-gradient(circle, #00ffff, transparent 60%);
+      animation-duration: 40s;
+      animation-direction: reverse;
+    }
+
+    .smoke3 {
+      background: radial-gradient(circle, #ff8c00, transparent 60%);
+      animation-duration: 35s;
+    }
+
+    .smoke4 {
+      background: radial-gradient(circle, #00ff87, transparent 60%);
+      animation-duration: 45s;
+      animation-direction: reverse;
+    }
+
+    @keyframes moveSmoke {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(200px, -150px) scale(1.3);
+      }
+      100% {
+        transform: translate(-200px, 150px) scale(1);
+      }
     }
 
     .hero * {
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
 
     h1 {
@@ -75,6 +112,7 @@
     .btn-wa {
       background: #25D366;
       color: black;
+      min-width: 260px;
     }
 
     .btn-inst {
@@ -117,8 +155,11 @@
 
   <section class="hero">
 
-    <!-- 🔥 Анимация -->
-    <div id="particles-js"></div>
+    <!-- 💨 СЛОИ ДЫМА -->
+    <div class="smoke smoke1"></div>
+    <div class="smoke smoke2"></div>
+    <div class="smoke smoke3"></div>
+    <div class="smoke smoke4"></div>
 
     <h1>CONDUCTOR</h1>
     <p>Цветные дымы • Краски Holi • Шоу</p>
@@ -128,11 +169,11 @@
     </a>
 
     <a href="https://wa.me/77018709384" target="_blank" class="btn btn-wa">
-      💬 WhatsApp 1
+      💬 WhatsApp +7 701 870 93 84
     </a>
 
     <a href="https://wa.me/77756511100" target="_blank" class="btn btn-wa">
-      💬 WhatsApp 2
+      💬 WhatsApp +7 775 651 11 00
     </a>
 
   </section>
@@ -153,47 +194,6 @@
   <footer>
     © Conductor.kz
   </footer>
-
-  <!-- ⚙️ Настройка частиц -->
-  <script>
-    particlesJS("particles-js", {
-      particles: {
-        number: {
-          value: 120
-        },
-        color: {
-          value: ["#ff0080", "#ff8c00", "#00ffff", "#00ff87", "#ff00ff"]
-        },
-        shape: {
-          type: "circle"
-        },
-        opacity: {
-          value: 0.6,
-          random: true
-        },
-        size: {
-          value: 6,
-          random: true
-        },
-        move: {
-          enable: true,
-          speed: 2,
-          direction: "none",
-          random: true,
-          out_mode: "out"
-        }
-      },
-      interactivity: {
-        events: {
-          onhover: {
-            enable: true,
-            mode: "repulse"
-          }
-        }
-      },
-      retina_detect: true
-    });
-  </script>
 
 </body>
 </html>
