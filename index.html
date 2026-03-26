@@ -1,203 +1,212 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>CONDUCTOR | Цветные дымы и Holi</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>CONDUCTOR | Цветные дымы и Holi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: black;
-      color: white;
-      text-align: center;
-      overflow-x: hidden;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: black;
+  color: white;
+}
 
-    .hero {
-      height: 100vh;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
 
-    /* 🌑 Затемнение */
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      z-index: 2;
-    }
-
-    /* 💨 ДЫМ */
-    .smoke {
+/* 💨 ТОПОВЫЙ ДЫМ */
+.smoke {
   position: absolute;
-  width: 180%;
-  height: 180%;
-  top: -40%;
-  left: -40%;
-  filter: blur(80px); /* было 120 — слишком мыло */
-  opacity: 0.8; /* усилили */
-  animation: moveSmoke 20s ease-in-out infinite;
+  width: 1500px;
+  height: 1500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.6;
   mix-blend-mode: screen;
 }
 
-/* Цвета делаем ярче и насыщеннее */
-.smoke1 {
-  background: radial-gradient(circle, #ff0066 0%, transparent 60%);
+/* разные цвета + разное движение */
+.s1 {
+  background: radial-gradient(circle, #ff0040, transparent 70%);
+  top: -300px;
+  left: -300px;
+  animation: move1 25s ease-in-out infinite;
 }
 
-.smoke2 {
-  background: radial-gradient(circle, #00eaff 0%, transparent 60%);
-  animation-direction: reverse;
+.s2 {
+  background: radial-gradient(circle, #00eaff, transparent 70%);
+  bottom: -300px;
+  right: -200px;
+  animation: move2 30s ease-in-out infinite;
 }
 
-.smoke3 {
-  background: radial-gradient(circle, #ff7a00 0%, transparent 60%);
+.s3 {
+  background: radial-gradient(circle, #ff8c00, transparent 70%);
+  top: 30%;
+  left: 60%;
+  animation: move3 28s ease-in-out infinite;
 }
 
-.smoke4 {
-  background: radial-gradient(circle, #00ff9d 0%, transparent 60%);
-  animation-direction: reverse;
+.s4 {
+  background: radial-gradient(circle, #00ff9d, transparent 70%);
+  bottom: 10%;
+  left: 10%;
+  animation: move4 32s ease-in-out infinite;
 }
 
-/* Движение делаем более живым */
-@keyframes moveSmoke {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(150px, -100px) scale(1.2);
-  }
-  50% {
-    transform: translate(-100px, 150px) scale(1.3);
-  }
-  75% {
-    transform: translate(100px, 50px) scale(1.1);
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
+.s5 {
+  background: radial-gradient(circle, #ff00ff, transparent 70%);
+  top: 50%;
+  left: 30%;
+  animation: move5 26s ease-in-out infinite;
 }
 
-    .hero * {
-      position: relative;
-      z-index: 3;
-    }
+/* движения разные */
+@keyframes move1 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(300px,200px) scale(1.4); }
+}
 
-    h1 {
-      font-size: 60px;
-      margin: 0;
-      letter-spacing: 2px;
-    }
+@keyframes move2 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(-300px,-150px) scale(1.5); }
+}
 
-    p {
-      font-size: 22px;
-      opacity: 0.9;
-      margin-top: 10px;
-    }
+@keyframes move3 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(-200px,250px) scale(1.3); }
+}
 
-    .btn {
-      margin-top: 15px;
-      padding: 15px 30px;
-      font-size: 18px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-      display: inline-block;
-    }
+@keyframes move4 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(250px,-200px) scale(1.4); }
+}
 
-    .btn-wa {
-      background: #25D366;
-      color: black;
-      min-width: 260px;
-    }
+@keyframes move5 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(-150px,-150px) scale(1.2); }
+}
 
-    .btn-inst {
-      background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
-      color: white;
-    }
+/* затемнение */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
 
-    .btn:hover {
-      transform: scale(1.05);
-    }
+/* контент */
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 90%;
+}
 
-    .features {
-      padding: 60px 20px;
-      background: #0a0a0a;
-    }
+/* текст */
+h1 {
+  font-size: 64px;
+  margin: 0;
+}
 
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
+p {
+  font-size: 22px;
+  margin-top: 10px;
+  opacity: 0.9;
+}
 
-    .card {
-      background: #111;
-      padding: 20px;
-      border-radius: 10px;
-      width: 250px;
-    }
+/* кнопки */
+.buttons {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column; /* В КОЛОНКУ */
+  gap: 15px;
+  align-items: center;
+}
 
-    footer {
-      padding: 20px;
-      font-size: 14px;
-      opacity: 0.5;
-    }
-  </style>
+.btn {
+  padding: 15px 25px;
+  font-size: 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  width: 300px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn-wa {
+  background: #25D366;
+  color: black;
+}
+
+.btn-inst {
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
+  color: white;
+}
+
+/* 📱 адаптив */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 42px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  .btn {
+    width: 90%;
+    font-size: 16px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <section class="hero">
+<section class="hero">
 
-    <!-- 💨 СЛОИ ДЫМА -->
-    <div class="smoke smoke1"></div>
-    <div class="smoke smoke2"></div>
-    <div class="smoke smoke3"></div>
-    <div class="smoke smoke4"></div>
+  <!-- 💨 ДЫМ -->
+  <div class="smoke s1"></div>
+  <div class="smoke s2"></div>
+  <div class="smoke s3"></div>
+  <div class="smoke s4"></div>
+  <div class="smoke s5"></div>
 
+  <div class="content">
     <h1>CONDUCTOR</h1>
     <p>Цветные дымы • Краски Holi • Шоу</p>
 
-    <a href="https://instagram.com/conductor.kz" target="_blank" class="btn btn-inst">
-      Instagram
-    </a>
+    <div class="buttons">
+      <a href="https://instagram.com/conductor.kz" target="_blank" class="btn btn-inst">
+        Instagram
+      </a>
 
-    <a href="https://wa.me/77018709384" target="_blank" class="btn btn-wa">
-      💬 WhatsApp +7 701 870 93 84
-    </a>
+      <a href="https://wa.me/77018709384" target="_blank" class="btn btn-wa">
+        💬 WhatsApp +7 701 870 93 84
+      </a>
 
-    <a href="https://wa.me/77756511100" target="_blank" class="btn btn-wa">
-      💬 WhatsApp +7 775 651 11 00
-    </a>
-
-  </section>
-
-  <section class="features">
-    <h2>Наши услуги</h2>
-
-    <div class="grid">
-      <div class="card">🌈 Краски Holi</div>
-      <div class="card">💨 Цветные дымы</div>
-      <div class="card">🎆 Салюты</div>
-      <div class="card">🔥 Шоу</div>
-      <div class="card">🎇 Фейерверки</div>
-      <div class="card">💥 Сценарии</div>
+      <a href="https://wa.me/77756511100" target="_blank" class="btn btn-wa">
+        💬 WhatsApp +7 775 651 11 00
+      </a>
     </div>
-  </section>
+  </div>
 
-  <footer>
-    © Conductor.kz
-  </footer>
+</section>
 
 </body>
 </html>
